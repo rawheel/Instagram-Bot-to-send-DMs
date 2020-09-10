@@ -45,13 +45,20 @@ class instabot:
 
 		for account in self.dm_accounts:
 
-		    search_bar = bot.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div[1]/div/div[2]/input")
-		    search_bar.send_keys(account)
-		    time.sleep(5)
+			search_bar = bot.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div[1]/div/div[2]/input")
+			search_bar.send_keys(account)
+			time.sleep(5)
+			check = bot.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div[2]/div")
+			c = check.text
+			if "No account found" not in c: 
+				sel_account = bot.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div[2]/div/div")
+				sel_account.click()
+				time.sleep(3)
+			else:
+				for i in range(len(account)):
+					search_bar.send_keys(Keys.BACKSPACE)
 
-		    sel_account = bot.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div[2]/div/div")
-		    sel_account.click()
-		    time.sleep(3)
+
 
 		time.sleep(2)    
 
@@ -74,7 +81,9 @@ class instabot:
 #username = os.environ.get('INSTA_USERNAME')
 #password = os.environ.get('INSTA_PASSWORD')
 
-account_1 = instabot(username,password,["pytroops","justinbieber","zayn","lanadelrey","dualipa","selenagomez"],"Hello dears, SUP?")
+
+
+account_1 = instabot(username,password,["selenagomez","llllkjjjo","justinbieber"],"https://www.instagram.com/justinbieber/")
 
 
 
